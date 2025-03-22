@@ -1,3 +1,53 @@
+# Frontend Layihəsinin Təlimatı (Azərbaycan dili)
+
+## Layihə haqqında
+Bu frontend layihəsi **Next**, **TypeScript** və **Tailwind CSS** ilə hazırlanmışdır. Layihə **backend**-ə asılıdır və düzgün işləməsi üçün **backend** lokal mühitdə işləməlidir.
+
+## Tələblər
+Layihəni işlətmək üçün aşağıdakı tələblərə cavab verən sistemə ehtiyac var:
+- **Node.js** (Son versiya tövsiyə olunur)
+- **npm** və ya **yarn**
+
+## Quraşdırma
+Layihəni endirdikdən sonra aşağıdakı addımları yerinə yetirin:
+
+```bash
+# Layihəni klonlayın
+$ git clone <repository-link>
+
+# Layihə qovluğuna keçin
+$ cd frontend
+
+# Asılılıqları quraşdırın
+$ npm install  # və ya `yarn install`
+```
+
+## Backend ilə Bağlantı
+Bu frontend layihəsi backend ilə əlaqəli olduğu üçün backend-in lokal mühitdə işləməsi vacibdir. Backend **localhost:3002** portunda işləməlidir. Əgər backend fərqli portda işləyirsə, **frontend konfiqurasiyasını müvafiq olaraq yeniləməlisiniz.**
+
+## Layihəni İşə Salmaq
+
+```bash
+# İnkişaf mühiti üçün
+$ npm run dev  # və ya `yarn dev`
+```
+
+Layihə **http://localhost:5173** ünvanında işləyəcək (Vite istifadə etdiyiniz halda). Əgər fərqli portda işləyirsə, terminalda göstərilən linki yoxlayın.
+
+## Build və Deployment
+
+```bash
+# Layihəni build etmək üçün
+$ npm run build  # və ya `yarn build`
+```
+
+Build edilmiş fayllar `dist` qovluğuna yazılacaq. Bu faylları istənilən **hosting** platformasına yükləyə bilərsiniz.
+
+## Əlaqə
+Layihə ilə bağlı suallarınız yaranarsa, bizimlə əlaqə saxlaya bilərsiniz. 🚀
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
