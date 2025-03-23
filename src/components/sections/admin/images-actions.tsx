@@ -38,9 +38,10 @@ export function ImagesActions({ image }: ImagesActionsProps) {
         setShowDeleteDialog(false)
         try {
             await deleteImage(image.id).unwrap()
-            console.log(`Deleting image with ID: ${image.id}`)
+            alert(`Deleting image with ID: ${image.id}`)
         } catch (error) {
-            console.log(error);   
+            const err = error as Error
+            alert(`Error: ${err.message}`)
         }
     }
 

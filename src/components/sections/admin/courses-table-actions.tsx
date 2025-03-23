@@ -38,11 +38,11 @@ export function CoursesTableActions({ course }: CoursesTableActionsProps) {
     const handleDelete = async () => {
         try {
             await deleteCourse(course.id).unwrap()
-            console.log(`Deleting course with ID: ${course.id}`)
+            alert(`Deleting course with ID: ${course.id}`)
             setShowDeleteDialog(false)
-            
         } catch (error) {
-            
+            const err = error as Error
+            alert(`Try again: ${err.message}`)
         }
     }
 

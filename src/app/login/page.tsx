@@ -33,6 +33,7 @@ export default function LoginPage() {
             }
             router.push("/admin");             
         } else {
+            alert('Invalid credentials. Try again.')
             setError("Invalid credentials. Try again.");
         }
     };

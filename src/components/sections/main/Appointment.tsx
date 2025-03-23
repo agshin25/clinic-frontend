@@ -63,7 +63,6 @@ const Appointment = () => {
                 message: ""
             });
         } catch (error) {
-            console.error("Failed to create appointment:", error);
             alert("Failed to create appointment. Please try again.");
         }
 

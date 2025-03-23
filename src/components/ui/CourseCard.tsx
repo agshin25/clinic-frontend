@@ -4,9 +4,7 @@ import Link from 'next/link';
 import { FaArrowRight } from "react-icons/fa";
 import { Course } from '@/interfaces/course';
 
-const CourseCard: React.FC<Course> = ({images, title, description, id, }) => {
-    console.log(images);
-    
+const CourseCard: React.FC<Course> = ({images, title, description, id, }) => {    
     return (
         <div className="bg-white rounded-lg shadow-md overflow-hidden w-full lg:min-h-[420px]">
             <div className="relative h-48 w-full">

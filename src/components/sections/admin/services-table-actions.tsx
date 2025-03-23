@@ -38,11 +38,11 @@ export function ServicesTableActions({ service }: ServicesTableActionsProps) {
     const handleDelete = async () => {
         try {
             await deleteService(service.id)
-            console.log(`Deleting service with ID: ${service.id}`)
+            alert(`Deleting service with ID: ${service.id}`)
             setShowDeleteDialog(false)
         } catch (error) {
-            console.log(error);
-            
+            const err = error as Error
+            alert(`Error: ${err.message}`)            
         }
     }
 

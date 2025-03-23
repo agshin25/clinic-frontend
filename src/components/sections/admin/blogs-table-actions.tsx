@@ -36,13 +36,13 @@ export function BlogsTableActions({ blog }: BlogsTableActionsProps) {
     const [deleteBlog] = useDeleteBlogMutation()
 
     const handleDelete = async () => {
-        console.log(`Deleting blog with ID: ${blog.id}`)
         setShowDeleteDialog(false)
         try {
             const response = await deleteBlog(blog.id).unwrap()
-            console.log("Blog deleted successfully:"    , response)
+            alert("Blog deleted successfully")
         } catch (error) {
-            console.log(error);
+            const err = error as Error
+           alert(`Error duirng deleting the blog: ${err.message}`)
             
         }
     }

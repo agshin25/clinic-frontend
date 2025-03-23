@@ -65,11 +65,11 @@ export default function NewBlogPage() {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const response = await createBlog({ ...values, imageIds: imageIds }).unwrap()
-            console.log("Blog created successfully:", response)
-
+            alert('Blog created successfully')
             router.push("/admin/blogs")
         } catch (error) {
-            console.error("Error creating blog:", error)
+            const err = error as Error
+            alert(`Error creating blog, try again: ${err.message}`)
         }
     }
 

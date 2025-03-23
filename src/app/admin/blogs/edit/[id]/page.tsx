@@ -15,7 +15,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Link from "next/link"
 import { ImageUploader } from "@/components/sections/admin/image-uploader"
 import { useGetBlogByIdQuery, useUpdateBlogMutation } from "@/services/blogApi"
-import { useUploadImageMutation } from "@/services/uploadApi"
 
 const formSchema = z.object({
   title: z.string().min(5, {
@@ -29,8 +28,8 @@ const formSchema = z.object({
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
       message: "Slug must contain only lowercase letters, numbers, and hyphens.",
     }),
-  description: z.string().min(10, {
-    message: "Description must be at least 10 characters.",
+  description: z.string().min(60, {
+    message: "Description must be at least 60 characters.",
   }),
   authorId: z.string(),
   imageIds: z.array(z.number()).optional(),
@@ -62,8 +61,6 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
 
   useEffect(() => {
     if (data) {
-      console.log(data);
-      
       form.reset({
         title: data.title || "",
         slug: data.slug || "",
@@ -80,11 +77,11 @@ export default function EditBlogPage({ params }: { params: Promise<{ id: string 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const response = await updateBlog({ id: +unwrappedParams.id, ...values, imageIds: imageIds }).unwrap()
-      console.log("Blog updated successfully:", response)
-
+      alert("Blog updated successfully")
       router.push("/admin/blogs")
     } catch (error) {
-      console.error("Error creating blog:", error)
+      const err = error as Error
+      alert(`Error creating blog, try again: ${err.message}`)
     }
   }
 

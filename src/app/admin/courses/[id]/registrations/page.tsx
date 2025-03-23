@@ -30,7 +30,7 @@ export default function CourseRegistrationsPage({ params }: { params: Promise<{ 
                 setCourse(courseData)
                 setFilteredRegistrations(courseData?.registrations || [])
             } catch (err) {
-                console.error("Error loading course:", err)
+                alert(`Error loading course: ${err}`)
                 setError("Failed to load course. Please try again.")
             } finally {
                 setIsLoading(false)

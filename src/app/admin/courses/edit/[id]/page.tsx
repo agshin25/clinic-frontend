@@ -21,8 +21,8 @@ const formSchema = z.object({
     title: z.string().min(5, {
         message: "Title must be at least 5 characters.",
     }),
-    description: z.string().min(10, {
-        message: "Description must be at least 10 characters.",
+    description: z.string().min(60, {
+        message: "Description must be at least 60 characters.",
     }),
     duration: z.string().min(3, {
         message: "Duration is required.",
@@ -79,10 +79,11 @@ export default function EditCoursePage({ params }: { params: Promise<{ id: strin
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             await updateCourse({id: +unwrappedParams.id, ...values, imageIds: imageIds}).unwrap()
-            console.log("Course updated succesfully")
+            alert('Course updated succesfully')
             router.push("/admin/courses")
         } catch (error) {
-            console.error("Error updating course:", error)
+            const err = error as Error
+            alert(`Error updating course, try again: ${err.message}`)
         }
     }
 

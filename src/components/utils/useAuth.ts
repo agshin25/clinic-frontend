@@ -29,7 +29,8 @@ const useAuth =  () => {
                         }
                     }
                 } catch (error) {
-                    console.error("Error validating token:", error)
+                    const err = error as Error
+                    alert(`Error validating token: ${err.message}`)
                     localStorage.removeItem('token')
                     router.replace('/login')
                 }

@@ -18,7 +18,6 @@ const CourseDetailPage = () => {
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     useEffect(() =>  {
-        console.log(formData);
         
     }, [formData])
 
@@ -32,9 +31,7 @@ const CourseDetailPage = () => {
         return phoneRegex.test(phone);
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        console.log(formData);
-        
+    const handleSubmit = async (e: React.FormEvent) => {        
         e.preventDefault();
         if (!formData.fullName.trim() || !formData.email.trim() || !formData.phone.trim()) {
             alert("All fields except notes are required");
@@ -52,7 +49,7 @@ const CourseDetailPage = () => {
             await registerForCourse({id: Number(params.id), ...formData}).unwrap()
             setIsSubmitted(true);
         } catch (error) {
-            console.log('Error during registration');
+            alert('Error during registration')
         }
 
         

@@ -54,11 +54,11 @@ export default function NewBlogPage() {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const response = await createService({ ...values, imageIds: imageIds }).unwrap()
-            console.log("Service created successfully:", response)
-
+            alert("Service created successfully")
             router.push("/admin/services")
         } catch (error) {
-            console.error("Error creating service:", error)
+            const err = error as Error
+            alert(`Error creating service, try again: ${err.message}`)
         }
     }
 

@@ -50,10 +50,10 @@ export function AppointmentsTableActions({ appointment }: AppointmentsTableActio
     const handleDelete = async () => {
         try {
             await deleteAppointment(appointment.id).unwrap()
-            console.log(`Deleting appointment with ID: ${appointment.id}`)
+            alert(`Deleting appointment with ID: ${appointment.id}`)
             setShowDeleteDialog(false)
         } catch (error) {
-            console.log(error);
+            alert(`Error deleting appointment`)
         }
 
     }

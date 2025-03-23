@@ -57,7 +57,6 @@ export function ImageUploader({ images, onChange, maxImages = 5 }: ImageUploader
 
         for (const file of filesToProcess) {
             try {
-                console.log("Uploading file:", file);
 
                 const formData = new FormData();
                 formData.append("image", file);
@@ -69,7 +68,7 @@ export function ImageUploader({ images, onChange, maxImages = 5 }: ImageUploader
                 }
 
             } catch (error) {
-                console.error("Upload failed", error);
+                alert(`Upload failed: ${error}`)
             }
         }
 

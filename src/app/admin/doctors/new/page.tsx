@@ -59,16 +59,14 @@ export default function NewDoctorPage() {
         form.setValue("profileImageId", updatedImageIds[0]);
     }
 
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
-        
+    async function onSubmit(values: z.infer<typeof formSchema>) {        
         try {
             const response = await addDoctor({ ...values}).unwrap()
-            console.log("Doctor added successfully:", response)
-
+            alert('Doctor added successfully')
             router.push("/admin/doctors")
         } catch (error) {
-            console.error("Error adding doctor:", error)
+            const err = error as Error
+            alert(`Error adding doctor, try again: ${err.message}`)
         }
     }
 

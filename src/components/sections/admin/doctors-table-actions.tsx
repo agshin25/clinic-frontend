@@ -38,11 +38,12 @@ export function DoctorsTableActions({ doctor }: DoctorsTableActionsProps) {
     const handleDelete = async () => {
         try {
             await deleteDoctor(doctor.id).unwrap()
-            console.log(`Deleting doctor with ID: ${doctor.id}`)
+            alert(`Deleting doctor with ID: ${doctor.id}`)
             setShowDeleteDialog(false)
 
         } catch (error) {
-            console.log(error);
+            const err = error as Error
+            alert(`Erro: ${err.message}`)
         }
        
     }

@@ -47,7 +47,7 @@ export function RegistrationsTableActions({ registration, courseId }: Registrati
     const [showDetailsDialog, setShowDetailsDialog] = useState(false)
 
     const handleDelete = async () => {
-        console.log(`Deleting registration with ID: ${registration.id} from course ${courseId}`)
+        alert(`Deleting registration with ID: ${registration.id} from course ${courseId}`)
         setShowDeleteDialog(false)
     }
 

@@ -25,8 +25,8 @@ const formSchema = z.object({
     specialty: z.string().min(2, {
         message: "Specialty must be at least 2 characters.",
     }).optional(),
-    shortAbout: z.string().min(10, {
-        message: "Short About must be at least 10 characters.",
+    shortAbout: z.string().min(30, {
+        message: "Short About must be at least 30 characters.",
     }).max(500, {
         message: "Short About cannot exceed 500 characters.",
     }).optional(),
@@ -78,11 +78,11 @@ export default function NewDoctorPage({params}: {params: Promise<{id: string}>})
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const response = await updateDoctor({id: +unwrappedParams.id, ...values, profileImageId: imageIds?.[0]}).unwrap()
-            console.log("Doctor added successfully:", response)
-
+            alert("Doctor added successfully")
             router.push("/admin/doctors")
         } catch (error) {
-            console.error("Error adding doctor:", error)
+            const err = error as Error
+            alert(`Error adding doctor, try again: ${err.message}`)
         }
     }
 

@@ -34,9 +34,7 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
     const [imageIds, setImageIds] = useState<number[]>([]);
     const [images, setImages] = useState<{ imageUrl: string; id?: number }[]>([]);
 
-    const unwrappedParams = use(params)
-    console.log(unwrappedParams);
-    
+    const unwrappedParams = use(params)    
     const { data, error, isLoading } = useGetOneServiceQuery(+unwrappedParams.id);
     const [updateService, { isLoading: isSubmitting }] = useUpdateServiceMutation()
     
@@ -66,11 +64,11 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
             const response = await updateService({ id: +unwrappedParams.id, ...values, imageIds: imageIds }).unwrap()
-            console.log("Servcie updated successfully:", response)
-
+            alert("Servcie updated successfully")
             router.push("/admin/services")
         } catch (error) {
-            console.error("Error updating service:", error)
+            const err = error as Error
+            alert(`Error updating service, try again: ${err.message}`)
         }
     }
 
