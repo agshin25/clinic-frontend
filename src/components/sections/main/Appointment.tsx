@@ -15,7 +15,7 @@ const Appointment = () => {
         message: ""
     });
 
-    const [createAppointment] = useMakeAppointmentMutation()
+    const [createAppointment, {isLoading}] = useMakeAppointmentMutation()
 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
